@@ -1,11 +1,11 @@
-//TODO include needed modules
+mod config;
+use config::environment::app_url;
+use config::routes::routes;
 
-pub async fn server(routes) {
-    // TODO connect to db 
-    
-    // TODO get the ip from ENV 
-    axum::Server::bind(&"0.0.0.0:3000".parse().unwrap())
-        .serve(routes.into_make_service())
+pub async fn server() {
+    // TODO connect to db     
+    axum::Server::bind(&app_url().parse().unwrap())
+        .serve(routes().into_make_service())
         .await
         .unwrap();
 }

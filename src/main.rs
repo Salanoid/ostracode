@@ -1,12 +1,12 @@
-mod controllers;
-mod models;
-mod config;
+// mod controllers;
+// mod models;
+pub mod config;
 
 pub use config::routes;
+pub use config::environment;
 pub use ostracode::server;
 
 #[tokio::main]
 async fn main() {
-    // TODO maybe pass the routes from here
     server().await
 }
